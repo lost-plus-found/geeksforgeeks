@@ -1,0 +1,19 @@
+#!/usr/bin/python
+from bs4 import BeautifulSoup
+import os, sys
+
+def DisplayContent(URL):
+	os.system('curl -s -o .page.html "' + URL + '"')
+	page	= open('./.page.html')
+	soup	= BeautifulSoup(page, 'html.parser')
+	pres	= soup.find_all('pre')
+	for pre in pres:
+		if "brush" in str(pre):
+			print pre.text.replace('\r', '')
+	os.system('rm .page.html')
+
+if __name__ == '__main__':
+	if len(sys.argv) == 2:
+		DisplayContent(sys.argv[1])
+	else:
+		print 'Better Luck Next Time'
