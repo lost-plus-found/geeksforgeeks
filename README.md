@@ -15,19 +15,9 @@ $ `cd ~`
 
 $ `git clone https://github.com/lost-plus-found/geeksforgeeks.git`
 
-or download a source code: [ACOE-Result-Command-Line](https://github.com/lost-plus-found/geeksforgeeks/archive/master.zip).
+or download a source code: [GeeksForGeeks-Command-Line](https://github.com/lost-plus-found/geeksforgeeks/archive/master.zip).
 
 $ `cd ~/geeksforgeeks`
-
-This is a one time installation
-
-`Register Number: 201XXXXXXX`
-
-`Password: `
-
-## Updating
-
-$ `cd ~/ACOE-Result-Command-Line`
 
 ### Running the command from anywhere
 
