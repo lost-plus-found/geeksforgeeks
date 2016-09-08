@@ -32,11 +32,14 @@ def DisplayContent(URL, StoreFlag):
 				i += 1
 				with open(TempFileName, 'w') as Temp:
 					Temp.write(Code)
+				print 'Saved as => ' + TempFileName
 			else:
 				print Code
 				HorizontalBreak(65)
 	if NoCode == 1:
 		print 'Enter a link with code!'
+	if StoreFlag == 1:
+		print 'Download Successful!'
 	os.system('rm .page.html')
 
 if __name__ == '__main__':
