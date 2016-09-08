@@ -21,6 +21,10 @@ or download a source code: [GeeksForGeeks-Command-Line](https://github.com/lost-
 
 $ `cd ~/geeksforgeeks`
 
-$ `./g4g <geeksforgeeks link> --store`
+##### To view all the codes in that page
 
-$ `ls`
+$ `./g4g <geeksforgeeks link>`
+
+##### To store all the codes in that page
+
+$ `./g4g <geeksforgeeks link> --store`
