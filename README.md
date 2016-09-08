@@ -17,9 +17,9 @@ $ `git clone https://github.com/lost-plus-found/geeksforgeeks.git`
 
 or download a source code: [GeeksForGeeks-Command-Line](https://github.com/lost-plus-found/geeksforgeeks/archive/master.zip).
 
+### Running the command
+
 $ `cd ~/geeksforgeeks`
 
-### Running the command from anywhere
-
-$ `./display <geeksforgeeks link>`
+$ `./display <geeksforgeeks link> > code.cpp`
 
