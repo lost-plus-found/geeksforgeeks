@@ -21,6 +21,6 @@ or download a source code: [GeeksForGeeks-Command-Line](https://github.com/lost-
 
 $ `cd ~/geeksforgeeks`
 
-$ `./display <geeksforgeeks link> --store`
+$ `./g4g <geeksforgeeks link> --store`
 
 $ `ls`
