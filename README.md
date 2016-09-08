@@ -1,5 +1,5 @@
-# GeeksForGeeks code splitter
-Get the code from GeeksForGeeks to command line
+# GeeksforGeeks Code Puller
+Pull the code from GeeksorGeeks to command line
 
 ## Preinstallations
 
@@ -15,20 +15,37 @@ $ `cd ~`
 
 $ `git clone https://github.com/lost-plus-found/geeksforgeeks.git`
 
-or download a source code: [GeeksForGeeks-Command-Line](https://github.com/lost-plus-found/geeksforgeeks/archive/master.zip).
-
-### Running the command
+or download a source code: [GeeksforGeeks-Code-Puller](https://github.com/lost-plus-found/geeksforgeeks/archive/master.zip).
 
 $ `cd ~/geeksforgeeks`
 
+$ `sudo make install`
+
+## Updating
+
+###### Please make sure you don't have any downloaded code in geeksforgeeks folder before updating
+
+$ `cd ~/geeksforgeeks`
+
+$ `sudo make update`
+
+## Uninstalling
+
+$ `cd ~/geeksforgeeks`
+
+$ `sudo make uninstall`
+
+### Running the command
+
+
 ##### To view all the codes in that page
 
-$ `./g4g <geeksforgeeks link>`
+$ `g4g <geeksforgeeks link>`
 
 ![Screenshot](./assets/SS1.png "Screenshot 1")
 
 ##### To store all the codes in that page
 
-$ `./g4g <geeksforgeeks link> --store`
+$ `g4g <geeksforgeeks link> --store`
 
 ![Screenshot](./assets/SS2.png "Screenshot 2")
