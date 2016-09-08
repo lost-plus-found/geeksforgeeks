@@ -2,18 +2,45 @@
 from bs4 import BeautifulSoup
 import os, sys
 
-def DisplayContent(URL):
+Home = 'http://www.geeksforgeeks.org/'
+Extension = '.cpp'
+
+def HorizontalBreak(Number):
+	Line = '*'*Number
+	print Line
+
+def DisplayContent(URL, StoreFlag):
 	os.system('curl -s -o .page.html "' + URL + '"')
-	page	= open('./.page.html')
-	soup	= BeautifulSoup(page, 'html.parser')
-	pres	= soup.find_all('pre')
+	Page	= open('./.page.html')
+	Soup	= BeautifulSoup(Page, 'html.parser')
+	pres	= Soup.find_all('pre')
+	FileName= URL[len(Home):].replace('/', '')
+	i	= 1
+	NoCode	= 1
 	for pre in pres:
 		if "brush" in str(pre):
-			print pre.text.replace('\r', '')
+			NoCode 	= 0
+			Code  	= pre.text.replace('\r', '')
+			if StoreFlag == 1:
+				TempFileName = str(FileName) + '-' + str(i) + Extension
+				i += 1
+				with open(TempFileName, 'w') as Temp:
+					Temp.write(Code)
+			else:
+				print Code
+				HorizontalBreak(65)
+	if NoCode == 1:
+		print 'Enter a link with code!'
 	os.system('rm .page.html')
 
 if __name__ == '__main__':
-	if len(sys.argv) == 2:
-		DisplayContent(sys.argv[1])
+	if len(sys.argv) >= 2:
+		StoreFlag = 0
+		if len(sys.argv) == 3 and sys.argv[2] == '--store':
+			StoreFlag = 1
+		if Home in sys.argv[1]:
+			DisplayContent(sys.argv[1], StoreFlag)
+		else:
+			print "I've been programmed to work only for " + Home
 	else:
 		print 'Better Luck Next Time'

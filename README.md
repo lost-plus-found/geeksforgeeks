@@ -21,5 +21,6 @@ or download a source code: [GeeksForGeeks-Command-Line](https://github.com/lost-
 
 $ `cd ~/geeksforgeeks`
 
-$ `./display <geeksforgeeks link> > code.cpp`
+$ `./display <geeksforgeeks link> --store`
 
+$ `ls`
