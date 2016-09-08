@@ -1,5 +1,5 @@
 # GeeksforGeeks Code Puller
-Pull the code from GeeksorGeeks to command line
+Pull the code from GeeksforGeeks to command line
 
 ## Preinstallations
 
