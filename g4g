@@ -3,11 +3,16 @@ from bs4 import BeautifulSoup
 import os, sys
 
 Home = 'http://www.geeksforgeeks.org/'
-Extension = '.cpp'
+Extensions = {'cpp':'.cpp', 'java':'.java', 'python':'.py'}
 
 def HorizontalBreak(Number):
 	Line = '*'*Number
 	print Line
+
+def GetExtension(pre):
+	for key in Extensions.keys():
+		if key in pre:
+			return Extensions[key]
 
 def DisplayContent(URL, StoreFlag):
 	os.system('curl -s -o .page.html "' + URL + '"')
@@ -22,6 +27,7 @@ def DisplayContent(URL, StoreFlag):
 			NoCode 	= 0
 			Code  	= pre.text.replace('\r', '')
 			if StoreFlag == 1:
+				Extension = GetExtension(str(pre))
 				TempFileName = str(FileName) + '-' + str(i) + Extension
 				i += 1
 				with open(TempFileName, 'w') as Temp:
