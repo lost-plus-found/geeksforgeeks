@@ -36,8 +36,11 @@ def DisplayContent(URL, StoreFlag):
 if __name__ == '__main__':
 	if len(sys.argv) >= 2:
 		StoreFlag = 0
-		if len(sys.argv) == 3 and sys.argv[2] == '--store':
-			StoreFlag = 1
+		if len(sys.argv) == 3:
+			if sys.argv[2] == '--store':
+				StoreFlag = 1
+			else:
+				print 'Invalid Command!'
 		if Home in sys.argv[1]:
 			DisplayContent(sys.argv[1], StoreFlag)
 		else:
