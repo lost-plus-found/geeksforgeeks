@@ -25,6 +25,10 @@ $ `cd ~/geeksforgeeks`
 
 $ `./g4g <geeksforgeeks link>`
 
+![Screenshot](./assets/SS1.png "Screenshot 1")
+
 ##### To store all the codes in that page
 
 $ `./g4g <geeksforgeeks link> --store`
+
+![Screenshot](./assets/SS2.png "Screenshot 2")
