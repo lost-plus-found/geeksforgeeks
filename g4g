@@ -18,6 +18,7 @@ def DisplayCodeHeadings(pres):
 	preCodes 	= ['+']
 	UnwantedCJava	= ['//', '/*', '*/']
 	SNo		= 1
+	print
 	for pre in pres:
 		if "brush: cpp" in str(pre):
 			preCodes.append(pre)
@@ -26,16 +27,37 @@ def DisplayCodeHeadings(pres):
 			for line in pre:
 				if '//' in line or '/*' in line:
 					heading += line
-				if '#include' in line:
+				if line.startswith('#include'):
 					break
 			for u in UnwantedCJava:
 				heading = heading.replace(u, '')
-			print str(SNo) + ')' + heading
+			print str(SNo) + ') (cpp)' + heading
 			SNo += 1
 		elif "brush: java" in str(pre):
-			v = ''
+			preCodes.append(pre)
+                        pre  = pre.text.splitlines()
+                        heading = ''
+                        for line in pre:
+                                if '//' in line or '/*' in line:
+                                        heading += line
+                                if line.startswith('import') or line.startswith('class'):
+                                        break
+                        for u in UnwantedCJava:
+                                heading = heading.replace(u, '')
+                        print str(SNo) + ') (java)' + heading
+                        SNo += 1
 		elif "brush: python" in str(pre):
-			v = ''
+			preCodes.append(pre)
+                        pre  = pre.text.splitlines()
+                        heading = ''
+                        for line in pre:
+                                if '#' in line:
+					heading += line
+                                if line.startswith('def'):
+                                        break
+			heading = heading.replace('#', '')
+                        print str(SNo) + ') (python)' + heading
+                        SNo += 1
 	return preCodes	
 
 def DisplayContent(URL, StoreFlag):
@@ -51,6 +73,9 @@ def DisplayContent(URL, StoreFlag):
 		if len(preCodes) > 1:
 			NoCode  = 0
 			Numbers = raw_input('> ').split()
+			if int(Numbers[0]) == 0:
+				print 'Bye!'
+				exit()
 			if '*' in Numbers:
 				Numbers = list(range(1, len(preCodes)))
 			else:
