@@ -27,7 +27,7 @@ def DisplayCodeHeadings(pres):
 			for line in pre:
 				if '//' in line or '/*' in line:
 					heading += line
-				if line.startswith('#include'):
+				if line.startswith('#include') or line.startswith('# include'):
 					break
 			for u in UnwantedCJava:
 				heading = heading.replace(u, '')
