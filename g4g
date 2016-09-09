@@ -86,7 +86,7 @@ def DisplayContent(URL, StoreFlag):
 				i += 1
 				with open(TempFileName, 'w') as Temp:
 					Temp.write(Code)
-				print 'Saved as => ' + TempFileName
+				print 'Saved ' + Number + ' as => ' + TempFileName
 	if StoreFlag == 0:
 		for pre in pres:
 			if "brush" in str(pre):
