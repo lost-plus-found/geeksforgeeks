@@ -50,7 +50,11 @@ def DisplayContent(URL, StoreFlag):
 		preCodes = DisplayCodeHeadings(pres)
 		if len(preCodes) > 1:
 			NoCode  = 0
-			Numbers = map(int, raw_input('> ').split())
+			Numbers = raw_input('> ').split()
+			if '*' in Numbers:
+				Numbers = list(range(1, len(preCodes)))
+			else:
+				Numbers = map(int, Numbers)
 			for Number in Numbers:
 				Code = preCodes[Number].text.replace('\r', '')
 				TempFileName = str(FileName) + '-' + str(i) + GetExtension(str(preCodes[Number]))
