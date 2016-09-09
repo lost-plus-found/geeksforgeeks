@@ -2,8 +2,8 @@
 from bs4 import BeautifulSoup
 import os, sys
 
-Home = 'http://www.geeksforgeeks.org/'
-Extensions = {'cpp':'.cpp', 'java':'.java', 'python':'.py'}
+Home 		= 'http://www.geeksforgeeks.org/'
+Extensions 	= {'cpp':'.cpp', 'java':'.java', 'python':'.py'}
 
 def HorizontalBreak(Number):
 	Line = '*'*Number
@@ -14,6 +14,30 @@ def GetExtension(pre):
 		if key in pre:
 			return Extensions[key]
 
+def DisplayCodeHeadings(pres):
+	preCodes 	= ['+']
+	UnwantedCJava	= ['//', '/*', '*/']
+	SNo		= 1
+	for pre in pres:
+		if "brush: cpp" in str(pre):
+			preCodes.append(pre)
+			pre  = pre.text.splitlines()
+			heading = ''
+			for line in pre:
+				if '//' in line or '/*' in line:
+					heading += line
+				if '#include' in line:
+					break
+			for u in UnwantedCJava:
+				heading = heading.replace(u, '')
+			print str(SNo) + ')' + heading
+			SNo += 1
+		elif "brush: java" in str(pre):
+			v = ''
+		elif "brush: python" in str(pre):
+			v = ''
+	return preCodes	
+
 def DisplayContent(URL, StoreFlag):
 	os.system('curl -s -o .page.html "' + URL + '"')
 	Page	= open('./.page.html')
@@ -22,18 +46,23 @@ def DisplayContent(URL, StoreFlag):
 	FileName= URL[len(Home):].replace('/', '')
 	i	= 1
 	NoCode	= 1
-	for pre in pres:
-		if "brush" in str(pre):
-			NoCode 	= 0
-			Code  	= pre.text.replace('\r', '')
-			if StoreFlag == 1:
-				Extension = GetExtension(str(pre))
-				TempFileName = str(FileName) + '-' + str(i) + Extension
+	if StoreFlag == 1:
+		preCodes = DisplayCodeHeadings(pres)
+		if len(preCodes) > 1:
+			NoCode  = 0
+			Numbers = map(int, raw_input('> ').split())
+			for Number in Numbers:
+				Code = preCodes[Number].text.replace('\r', '')
+				TempFileName = str(FileName) + '-' + str(i) + GetExtension(str(preCodes[Number]))
 				i += 1
 				with open(TempFileName, 'w') as Temp:
 					Temp.write(Code)
 				print 'Saved as => ' + TempFileName
-			else:
+	if StoreFlag == 0:
+		for pre in pres:
+			if "brush" in str(pre):
+				NoCode 	= 0
+				Code  	= pre.text.replace('\r', '')
 				print Code
 				HorizontalBreak(65)
 	if NoCode == 1:
