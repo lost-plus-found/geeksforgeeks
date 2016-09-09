@@ -18,7 +18,7 @@ def DisplayCodeHeadings(pres):
 	preCodes 	= ['+']
 	UnwantedCJava	= ['//', '/*', '*/']
 	SNo		= 1
-	print
+	print 'type numbers: [1 2 .. to save the code] or [* to save all the codes] or [0 to exit]'
 	for pre in pres:
 		if "brush: cpp" in str(pre):
 			preCodes.append(pre)
@@ -73,7 +73,7 @@ def DisplayContent(URL, StoreFlag):
 		if len(preCodes) > 1:
 			NoCode  = 0
 			Numbers = raw_input('> ').split()
-			if int(Numbers[0]) == 0:
+			if '0' in Numbers:
 				print 'Bye!'
 				exit()
 			if '*' in Numbers:
